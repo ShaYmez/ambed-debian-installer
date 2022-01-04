@@ -12,4 +12,4 @@ ExecStart=/ambed/ambed 127.0.0.1
 Restart=on-abnormal
 
 [Install]
-WantedBy=multi-user.targe
+WantedBy=multi-user.target
