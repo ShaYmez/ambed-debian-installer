@@ -115,7 +115,7 @@ systemctl daemon-reload
 sleep 2
 clear
 sleep 2
-echo "Starting AMBEd Server.....
+echo "Starting AMBEd Server....."
 systemctl enable ambed
 figlet "AMBEd"
 sleep 3
