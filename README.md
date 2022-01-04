@@ -1,9 +1,15 @@
 # AMBEd Installer for XLXd (Debian 11 Support!)
-## ambed-debian-installer N5AMD
--
-This is a simple install script by N5AMD to install AMBEd, a piece of software that when combined with hardware AMBE vocoder chips and another piece of software, XLXD, can transcode digital voice modes. This script simply runs through the official install instructions found at:
+
+## ambed-debian-installer
+
+This installer was orginally created by N5AMD. The script has been slightly changed with updated dependencies & updated links from FTDI. Thanks to all
+the contributors on this script! The original script can be found here https://github.com/n5amd/ambed-debian-installer
+
+To continue to use this fork please follow the instructions below:
+
+This is a simple install script to install AMBEd, a piece of software that when combined with hardware AMBE vocoder chips and another piece of software, XLXD, can transcode digital voice modes. This script simply runs through the official install instructions found at:
 https://github.com/LX3JL/xlxd/blob/master/ambed/readme
--
+
 
 ### How To Install:
 1. Have a Debian 9, 10 or 11 x86/ARM computer ready and up to date with a 64bit CPU architecture.
@@ -39,6 +45,6 @@ chmod 755 /ambed/watchdog
 
 https://github.com/n5amd/Multi-Reflector-Installer
 
-**For more information, please visit N5AMD!:**
+**For more information, please visit N5AMD:**
 
 https://n5amd.com/digital-radio-how-tos/build-digital-voice-transcoding-server/
