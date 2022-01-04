@@ -3,7 +3,7 @@
 #A tool to install AMBE server.
 #This is essentially a scripted version of:
 #https://github.com/LX3JL/xlxd/blob/master/ambed/readme
-#Step 1: Install Debian 9.x and make sure it has internet and is up to date.
+#Step 1: Install Debian 8, 9 & 10 and make sure it has internet and is up to date.
 #Step 2: Plug AMBE Chip(s) into computer.
 #Step 3: Run this script on the computer with the ambe chips.
 #Step 4: Reboot after installation.
@@ -31,7 +31,7 @@ X64=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.4.6.tgz
 X32=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.6.tgz
 ARM=https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v7-hf-1.4.22.tgz
 AMBINSTDIR=/root/reflector-install-files/ambed
-DEP="wget git build-essential"
+DEP="wget git g++ build-essential"
 GITREPO=https://github.com/LX3JL/xlxd.git
 echo "------------------------------------------------------------------------------"
 echo " Installing required software..."
@@ -91,7 +91,7 @@ then
         echo "------------------------------------------------------------------------------"
         else
         echo "------------------------------------------------------------------------------"
-        echo "I dont see an AMBED file after compiling. Look at the errors above and try again. Exiting....."
+        echo "I dont see an AMBEd file after compiling. Look at the errors above and try again. Exiting....."
         echo "------------------------------------------------------------------------------"
         exit 0
 fi
