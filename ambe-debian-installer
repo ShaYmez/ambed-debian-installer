@@ -3,7 +3,7 @@
 #A tool to install AMBE server.
 #This is essentially a scripted version of:
 #https://github.com/LX3JL/xlxd/blob/master/ambed/readme
-#Step 1: Install Debian 8, 9 & 10 and make sure it has internet and is up to date.
+#Step 1: Install Debian 8, 9 10 or 11 and make sure it has internet and is up to date.
 #Step 2: Plug AMBE Chip(s) into computer.
 #Step 3: Run this script on the computer with the ambe chips.
 #Step 4: Reboot after installation.
@@ -31,7 +31,7 @@ X64=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.4.6.tgz
 X32=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.6.tgz
 ARM=https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v7-hf-1.4.22.tgz
 AMBINSTDIR=/root/reflector-install-files/ambed
-DEP="wget git g++ build-essential figlet"
+DEP="wget git g++ build-essential figlet nano"
 GITREPO=https://github.com/LX3JL/xlxd.git
 echo "------------------------------------------------------------------------------"
 echo " Installing required software..."
@@ -115,7 +115,7 @@ systemctl daemon-reload
 sleep 2
 clear
 sleep 2
-echo "Starting AMBEd Server....."
+echo "Enabling AMBEd Server....."
 systemctl enable ambed
 figlet "AMBEd"
 sleep 3
@@ -123,12 +123,12 @@ echo ""
 echo ""
 echo "************************************************************************"
 echo ""
+echo "                The AMBEd Installation Is Complete!                     "
 echo ""
-echo "                   The install is complete.                             "
 echo "              ******* Now reboot the server. *******                    "
 echo "         Use 'systemctl status ambed' to check the status.              "
 echo "            ambed logs are part of /var/log/messages.                   "
-echo "      Just make sure this computer can be accessed over UDP 10100       "
+echo "     Just make sure this computer can be accessed over UDP 10100        "
 echo ""
 echo ""
 echo "************************************************************************"
