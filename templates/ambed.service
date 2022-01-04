@@ -1,12 +1,15 @@
 [Unit]
-Description=AMBED
+Description=AMBE Transcoder Daemon
+After=network.target
 
 [Service]
 Type=simple
+User=root
+Group=root
 ExecStartPre=-/sbin/rmmod ftdi_sio
-ExecStartPre=-/sbin/rmmod usbserial 
-ExecStart=/ambed/ambed LOCAL-IP
+ExecStartPre=-/sbin/rmmod usb_serial
+ExecStart=/ambed/ambed 127.0.0.1
+Restart=on-abnormal
 
 [Install]
-WantedBy=multi-user.target
-Alias=ambed.service
+WantedBy=multi-user.targe
