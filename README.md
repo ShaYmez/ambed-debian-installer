@@ -8,17 +8,28 @@ https://github.com/LX3JL/xlxd/blob/master/ambed/readme
 ```sh
 git clone https://github.com/n5amd/ambed-debian-installer
 cd ambed-debian-installer
-./ambe-debian-installer
+./ambed-debian-installer
 ```
 4. Reboot after installation is complete.
 
-### To interact with ambed after installation:
+### To interact with AMBEd after installation:
 ```sh
 systemctl start|stop|status|restart ambed
 ```
  - Installs to /ambed
  - Logs are via systemctl status
 
+### Watchdog for AMBEd
+5. Install additional tools. Assuming you are still in the ambed-debian-installer dir..
+```sh
+cd templates
+cp watchdog /ambed/watchdog
+chmod 755 /ambed/watchdog
+```
+6. You can run the watchdog every 5 mins with a cron job
+```sh
+* */5 * * * * /ambed/./watchdog >> /ambed/watchdog.log
+```
 
 **The other parts to this install, if you need it can be found at:**
 
