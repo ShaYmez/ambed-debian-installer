@@ -81,6 +81,14 @@ echo "--------------------------------------------------------------------------
 cd $AMBINSTDIR
 git clone $GITREPO
 cd $AMBINSTDIR/xlxd/ambed/
+sleep 5
+echo "------------------------------------------------------------------------------"
+echo "Edit your configuration..."
+echo "------------------------------------------------------------------------------"
+sleep 5
+echo "If unsure about this feature then just hit 'CTRL-X'."
+sleep 3
+nano main.h
 make clean
 make
 make install
