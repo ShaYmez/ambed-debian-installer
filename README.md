@@ -1,10 +1,12 @@
-## ambed-debian-installer (Debian 11 Support!)
+## AMBEd Installer for XLXd (Debian 11 Support!)
+# ambed-debian-installer N5AMD
 -
 This is a simple install script by N5AMD to install AMBEd, a piece of software that when combined with hardware AMBE vocoder chips and another piece of software, XLXD, can transcode digital voice modes. This script simply runs through the official install instructions found at:
 https://github.com/LX3JL/xlxd/blob/master/ambed/readme
+-
 
 ### How To Install:
-1. Have a Debian 9, 10 or 11 computer ready and up to date with a 64bit CPU architecture.
+1. Have a Debian 9, 10 or 11 x86/ARM computer ready and up to date with a 64bit CPU architecture.
 2. Plug the AMBE vocoder chips into the server.
 3. 
 ```sh
