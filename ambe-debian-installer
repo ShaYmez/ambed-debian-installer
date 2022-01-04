@@ -31,7 +31,7 @@ X64=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.4.6.tgz
 X32=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.6.tgz
 ARM=https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v7-hf-1.4.22.tgz
 AMBINSTDIR=/root/reflector-install-files/ambed
-DEP="wget git g++ build-essential"
+DEP="wget git g++ build-essential figlet"
 GITREPO=https://github.com/LX3JL/xlxd.git
 echo "------------------------------------------------------------------------------"
 echo " Installing required software..."
@@ -104,7 +104,13 @@ cp ambed /ambed
 cp $DIRDIR/templates/ambed.service /etc/systemd/system/
 sed -i "s/LOCAL-IP/$LOCAL_IP/g" /etc/systemd/system/ambed.service
 systemctl daemon-reload
+sleep 2
+clear
+sleep 2
+echo "Starting AMBEd Server.....
 systemctl enable ambed
+figlet "AMBEd"
+sleep 3
 echo ""
 echo ""
 echo "************************************************************************"
