@@ -1,11 +1,11 @@
 
 #!/bin/bash
-#A tool to install AMBE server.
+#A tool to install AMBE server with Debian / Ubuntu support.
 #This is essentially a scripted version of:
 #https://github.com/LX3JL/xlxd/blob/master/ambed/readme
-#Step 1: Install Debian 8, 9 10 or 11 and make sure it has internet and is up to date.
-#Step 2: Plug AMBE Chip(s) into computer.
-#Step 3: Run this script on the computer with the ambe chips.
+#Step 1: Install Debian 9 10 or 11 or Ubuntu 20.04 onwards.. and make sure it has internet and is up to date.
+#Step 2: Plug AMBE Chip(s) into computer or Raspi-pi.
+#Step 3: Run this script on the computer with the ambe chips pluged in.
 #Step 4: Reboot after installation.
 # systemctl status ambed #to show the status
 # systemctl stop ambed #to stop ambed
@@ -21,7 +21,7 @@ fi
 if [ ! -e "/etc/debian_version" ]
 then
   echo ""
-  echo "This script is only tested in Debian 9,10 & 11 for now."
+  echo "This script is only tested in Debian 9,10 & 11 repo only."
   exit 0
 fi
 DIRDIR=$(pwd)
@@ -32,12 +32,12 @@ X32=https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.22.tgz
 ARMv7=https://ftdichip.com/wp-content/uploads/2021/09/libftd2xx-arm-v7-hf-1.4.24.tgz
 ARMv8=https://ftdichip.com/wp-content/uploads/2021/09/libftd2xx-arm-v8-1.4.24.tgz
 AMBINSTDIR=/root/reflector-install-files/ambed
-DEP="wget git g++ build-essential figlet nano"
+DEP="wget git build-essential g++ figlet nano"
 GITREPO=https://github.com/LX3JL/xlxd.git
 echo "------------------------------------------------------------------------------"
 echo " Installing required software..."
 echo "------------------------------------------------------------------------------"
-apt install -y $DEP
+apt-get install -y $DEP
 mkdir -p /ambed
 mkdir -p $AMBINSTDIR
 if [ ! -e /usr/local/lib/libftd2xx.so ]
@@ -53,7 +53,7 @@ then
                 tar xfvz libftd2xx-x86_64-1.4.24.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 755 /usr/local/lib/libftd2xx.so.1.4.24
+                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.24
                 ln -sf /usr/local/lib/libftd2xx.so.1.4.24 /usr/local/lib/libftd2xx.so
         elif [ "$ARC" = "armv7" ];
         then
@@ -61,7 +61,7 @@ then
                 tar zxf libftd2xx-arm-v7-hf-1.4.24.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 755 /usr/local/lib/libftd2xx.so.1.4.24
+                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.24
                 ln -sf /usr/local/lib/libftd2xx.so.1.4.24 /usr/local/lib/libftd2xx.so
         elif [ "$ARC" = "aarch64" ];
         then
@@ -69,7 +69,7 @@ then
                 tar zxf libftd2xx-arm-v8-1.4.24.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 755 /usr/local/lib/libftd2xx.so.1.4.24
+                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.24
                 ln -sf /usr/local/lib/libftd2xx.so.1.4.24 /usr/local/lib/libftd2xx.so
         elif [ "$ARC" = "i686" ];
         then
@@ -77,7 +77,7 @@ then
                 tar xfvz libftd2xx-i386-1.4.22.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 755 /usr/local/lib/libftd2xx.so.1.4.22
+                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.22
                 ln -sf /usr/local/lib/libftd2xx.so.1.4.22 /usr/local/lib/libftd2xx.so
         fi
 else
@@ -85,7 +85,7 @@ else
         echo "It looks like the driver is already installed. If this is wrong, see what '/usr/local/lib/libftd2xx.so' is up to. Skipping FTDI Driver install. "
 fi
 echo "------------------------------------------------------------------------------"
-echo "Downloading and installing AMBED..."
+echo "Downloading and installing AMBEd..."
 echo "------------------------------------------------------------------------------"
 cd $AMBINSTDIR
 git clone $GITREPO
@@ -104,7 +104,7 @@ make install
 if [ -e ambed ]
 then
         echo "------------------------------------------------------------------------------"
-        echo "It looks like everything compiled successfully. There is an 'ambed' application file. "
+        echo "It looks like everything compiled successfully. There is an 'AMBEd' application file. "
         echo "------------------------------------------------------------------------------"
         else
         echo "------------------------------------------------------------------------------"
@@ -115,7 +115,7 @@ fi
 echo ""
 echo ""
 echo "------------------------------------------------------------------------------"
-echo "Copying ambed files and systemd files... "
+echo "Copying AMBEd files and systemd files... "
 echo "------------------------------------------------------------------------------"
 cp ambed /ambed
 cp $DIRDIR/templates/ambed.service /etc/systemd/system/
