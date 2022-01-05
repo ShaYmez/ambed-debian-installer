@@ -12,64 +12,73 @@
 # systemctl start ambed #to start ambed
 # ambed logs are part of /var/log/messages
 #Lets begin-------------------------------------------------------------------------------------------------
-if [ "$EUID" -ne 0 ];
+if [[ $EUID -ne 0 ]];
 then
   echo ""
   echo "You Must be root to run this script!!"
-  exit 0
+  exit 1
 fi
 if [ ! -e "/etc/debian_version" ]
 then
   echo ""
-  echo "This script is only tested in Debian 8,9,10. for now."
+  echo "This script is only tested in Debian 9,10 & 11 for now."
   exit 0
 fi
 DIRDIR=$(pwd)
 LOCAL_IP=$(ip a | grep inet | grep "eth0\|en" | awk '{print $2}' | tr '/' ' ' | awk '{print $1}')
 ARC=$(lscpu | grep Arch | awk '{print $2}')
-X64=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.4.6.tgz
-X32=http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.6.tgz
-ARM=https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v7-hf-1.4.22.tgz
+X64=https://ftdichip.com/wp-content/uploads/2021/09/libftd2xx-x86_64-1.4.24.tgz
+X32=https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.22.tgz
+ARMv7=https://ftdichip.com/wp-content/uploads/2021/09/libftd2xx-arm-v7-hf-1.4.24.tgz
+ARMv8=https://ftdichip.com/wp-content/uploads/2021/09/libftd2xx-arm-v8-1.4.24.tgz
 AMBINSTDIR=/root/reflector-install-files/ambed
 DEP="wget git g++ build-essential figlet nano"
 GITREPO=https://github.com/LX3JL/xlxd.git
 echo "------------------------------------------------------------------------------"
 echo " Installing required software..."
 echo "------------------------------------------------------------------------------"
-apt-get -y install $DEP
+apt install -y $DEP
 mkdir -p /ambed
 mkdir -p $AMBINSTDIR
 if [ ! -e /usr/local/lib/libftd2xx.so ]
 then
   echo ""
         echo "------------------------------------------------------------------------------"
-        echo "Downloading and installing FTDI driver...."
+        echo "Downloading and installing latest FTDI drivers...."
         echo "------------------------------------------------------------------------------"
         cd $AMBINSTDIR
         if [ "$ARC" = "x86_64" ];
         then
                 wget $X64
-                tar xfvz libftd2xx-x86_64-1.4.6.tgz
+                tar xfvz libftd2xx-x86_64-1.4.24.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.6
-                ln -sf /usr/local/lib/libftd2xx.so.1.4.6 /usr/local/lib/libftd2xx.so
-        elif [ "$ARC" = "armv7l" ];
+                chmod 755 /usr/local/lib/libftd2xx.so.1.4.24
+                ln -sf /usr/local/lib/libftd2xx.so.1.4.24 /usr/local/lib/libftd2xx.so
+        elif [ "$ARC" = "armv7" ];
         then
-                wget $ARM
-                tar zxf libftd2xx-arm-v7-hf-1.4.22.tgz
+                wget $ARMv7
+                tar zxf libftd2xx-arm-v7-hf-1.4.24.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.22
-                ln -sf /usr/local/lib/libftd2xx.so.1.4.22 /usr/local/lib/libftd2xx.so
+                chmod 755 /usr/local/lib/libftd2xx.so.1.4.24
+                ln -sf /usr/local/lib/libftd2xx.so.1.4.24 /usr/local/lib/libftd2xx.so
+        elif [ "$ARC" = "aarch64" ];
+        then
+                wget $ARMv8
+                tar zxf libftd2xx-arm-v8-1.4.24.tgz
+                cd release/build
+                cp libftd2xx.* /usr/local/lib
+                chmod 755 /usr/local/lib/libftd2xx.so.1.4.24
+                ln -sf /usr/local/lib/libftd2xx.so.1.4.24 /usr/local/lib/libftd2xx.so
         elif [ "$ARC" = "i686" ];
         then
                 wget $X32
-                tar xfvz libftd2xx-i386-1.4.6.tgz
+                tar xfvz libftd2xx-i386-1.4.22.tgz
                 cd release/build
                 cp libftd2xx.* /usr/local/lib
-                chmod 0755 /usr/local/lib/libftd2xx.so.1.4.6
-                ln -sf /usr/local/lib/libftd2xx.so.1.4.6 /usr/local/lib/libftd2xx.so
+                chmod 755 /usr/local/lib/libftd2xx.so.1.4.22
+                ln -sf /usr/local/lib/libftd2xx.so.1.4.22 /usr/local/lib/libftd2xx.so
         fi
 else
         echo "------------------------------------------------------------------------------"
