@@ -1,4 +1,4 @@
-# AMBEd Installer for XLXd
+# AMBEd Installer for XLXd (Debain 11 Support!)
 
 ## ambed-debian-installer
 
@@ -12,9 +12,10 @@ https://github.com/LX3JL/xlxd/blob/master/ambed/readme
 
 
 ### How To Install:
-1. Have a Debian 9, 10 or 11 x86/ARM computer ready and up to date with a 64bit CPU architecture.
-2. Plug the AMBE vocoder chips into the server.
-3. 
+1. Have a Debian 9, 10 or 11 x86/ARM computer ready and up to date with preferably a 64bit CPU.
+Script works with aarch64 and Ubuntu 21.10, tried and tested on ARM. (Pi-4)!!!
+3. Plug the AMBE vocoder chips into the server.
+4. 
 ```sh
 git clone https://github.com/shaymez/ambed-debian-installer
 cd ambed-debian-installer
@@ -34,11 +35,11 @@ systemctl start|stop|status|restart ambed
 ```sh
 cd templates
 cp watchdog /ambed/watchdog
-chmod 755 /ambed/watchdog
+chmod 0755 /ambed/watchdog
 ```
 6. You can run the watchdog every 5 mins with a cron job
 ```sh
-* */5 * * * * /ambed/./watchdog >> /ambed/watchdog.log
+*/5 * * * * /ambed/./watchdog >> /ambed/watchdog.log
 ```
 
 **The other parts to this install, if you need it can be found at:**
