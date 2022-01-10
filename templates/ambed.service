@@ -8,6 +8,7 @@ User=root
 Group=root
 ExecStartPre=-/sbin/rmmod ftdi_sio
 ExecStartPre=-/sbin/rmmod usb_serial
+# Add local IP for ofsite, keep 127.0.0.1 if running xlxd on same machine as ambed
 ExecStart=/ambed/ambed 127.0.0.1
 Restart=on-abnormal
 
