@@ -1,4 +1,4 @@
-# AMBEd Installer for XLXd (Debain 11 Support!)
+# AMBEd Installer for XLXd (Debian 11 Support!)
 
 ## ambed-debian-installer v2
 
