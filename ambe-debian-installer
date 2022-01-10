@@ -1,12 +1,13 @@
 
 #!/bin/bash
-#A tool to install AMBE server with Debian / Ubuntu support.
-#This is essentially a scripted version of:
-#https://github.com/LX3JL/xlxd/blob/master/ambed/readme
-#Step 1: Install Debian 9 10 or 11 or Ubuntu 20.04 onwards.. and make sure it has internet and is up to date.
-#Step 2: Plug AMBE Chip(s) into computer or Raspi-pi.
-#Step 3: Run this script on the computer with the ambe chips pluged in.
-#Step 4: Reboot after installation.
+# Version 2.1.1 Edited by M0VUB
+# A tool to install AMBE server with Debian / Ubuntu support.
+# This is essentially a scripted version of:
+# https://github.com/LX3JL/xlxd/blob/master/ambed/readme
+# Step 1: Install Debian 9 10 or 11 or Ubuntu 20.04 onwards.. and make sure it has internet and is up to date.
+# Step 2: Plug AMBE Chip(s) into computer or Raspi-pi.
+# Step 3: Run this script on the computer with the ambe chips pluged in.
+# Step 4: Reboot after installation.
 # systemctl status ambed #to show the status
 # systemctl stop ambed #to stop ambed
 # systemctl start ambed #to start ambed
