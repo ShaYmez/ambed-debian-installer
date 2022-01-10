@@ -23,6 +23,13 @@ cd ambed-debian-installer
 ```
 4. Reboot after installation is complete.
 
+### Edit AMBEd system unit for LocalHost
+5. If you are running this transcoder on the same LocalHost as XLXd then there is no need to edit. If running AMBED on a remote site then you will need to include
+your local IP address in the system unit file. Change the default 127.0.0.1 to your LOCAL IP etc 192.168.1........ otherwise trancoding will not work.
+```sh
+nano /etc/systemd/system/ambed.service
+```
+
 ### To interact with AMBEd after installation:
 ```sh
 systemctl start|stop|status|restart ambed
@@ -31,13 +38,13 @@ systemctl start|stop|status|restart ambed
  - Logs are via systemctl status
 
 ### Watchdog for AMBEd
-5. Install additional tools. Assuming you are still in the ambed-debian-installer dir..
+6. Install additional tools. Assuming you are still in the ambed-debian-installer dir..
 ```sh
 cd templates
 cp watchdog /ambed/watchdog
 chmod 0755 /ambed/watchdog
 ```
-6. You can run the watchdog every 5 mins with a cron job
+7. You can run the watchdog every 5 mins with a cron job
 ```sh
 */5 * * * * /ambed/./watchdog >> /ambed/watchdog.log
 ```
