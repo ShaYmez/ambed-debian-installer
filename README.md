@@ -30,6 +30,12 @@ your local IP address in the system unit file. Change the default 127.0.0.1 to y
 nano /etc/systemd/system/ambed.service
 ```
 
+6. If you have changed the system unit file you will need to restart the daemon and restart the AMBEd service.
+```sh
+systemctl daemon-reload
+systemctl restart ambed
+```
+
 ### To interact with AMBEd after installation:
 ```sh
 systemctl start|stop|status|restart ambed
