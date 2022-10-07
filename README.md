@@ -26,7 +26,7 @@ cd ambed-debian-installer
 
 ### Edit AMBEd system unit for LocalHost
 5. If you are running this transcoder on the same LocalHost as XLXd then there is no need to edit. If running AMBED on a remote site then you will need to include
-your local IP address in the system unit file. Change the default 127.0.0.1 to your LOCAL IP etc 192.168.1........ otherwise trancoding will not work.
+your local IP address in the system unit file. If running on local machine with XLXd then use 127.0.0.1 or the trascoding will not work!
 ```sh
 nano /etc/systemd/system/ambed.service
 ```
